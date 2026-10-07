@@ -1,70 +1,60 @@
-# AI Market Prediction Tracker
+# Market Analysis & Prediction Tracker
 
-This is a Streamlit website for a senior project research tool.
+This project is a financial market tracker I built using Python and Streamlit. I originally started it as my high school senior project because I wanted to learn more about financial markets and explore how data and technology could be used to analyze stocks.
 
-The app uses stock price data, sector ETF data, technical indicators, fundamentals, analyst data, news headlines, and saved prediction evaluation.
-If optional API keys are missing, the app still runs with Yahoo Finance data and built-in explanations.
+The app compares stocks across different market sectors using real market data, technical indicators, company fundamentals, analyst information, and recent news. It combines these factors into a scoring system and tracks how its predictions compare with actual market results over time.
 
-## What the files do
+## What It Does
 
-- `app.py` is the website. This is the main file you run.
-- `requirements.txt` lists the Python package the project needs.
-- `README.md` explains the project and how to run it.
-- `supabase_schema.sql` creates the online database tables for deployment.
-- `.streamlit/config.toml` stores Streamlit display settings for deployment.
-- `.streamlit/secrets.example.toml` shows the secret keys the deployed app can use.
+The tracker looks at several stocks within each market sector and compares them using different types of financial data.
 
-## How to run the app
+For each stock, it considers:
 
-Open a terminal in this folder and type:
+- Recent price performance
+- 20-day and 50-day moving averages
+- Trading volume
+- RSI
+- Volatility
+- Revenue and earnings growth
+- Profit margins
+- Forward P/E
+- Analyst price targets
+- Sector performance
+- Recent news
+
+The program combines these factors into a score and uses that score to identify the strongest stock within each sector and generate a short-term market outlook.
+
+## Prediction Tracking
+
+One of the main goals of the project was to go beyond simply generating a prediction.
+
+The app saves its previous predictions and later compares them with what actually happened in the market. This allows me to track how the system performs over time instead of only looking at its current results.
+
+The dashboard also includes a simulated portfolio to show how the selected stocks perform after being chosen.
+
+## How the Scoring Works
+
+The prediction system uses a scoring method that I designed rather than a trained machine-learning model.
+
+Different factors contribute positively or negatively to a stock's score. For example, the system considers recent price trends, moving averages, company growth, analyst expectations, sector performance, news, and volatility.
+
+The score is then used to compare stocks and create a short-term directional signal.
+
+## Built With
+
+- Python
+- Streamlit
+- pandas
+- yfinance
+- Supabase
+- Financial Modeling Prep API (optional)
+- OpenAI API (optional)
+
+Yahoo Finance provides most of the market and company data used by the application. Additional APIs can be used for news data and explanations, but the main application can still run without them.
+
+## Running the Project
+
+Install the required packages:
 
 ```bash
 pip install -r requirements.txt
-streamlit run app.py
-```
-
-After that, Streamlit should open the website in your browser.
-
-## What the app includes
-
-- One selected stock from each market sector
-- Candidate stock comparison inside each sector
-- A simulated $1,000 investment in each selected stock
-- Real stock price data using `yfinance`
-- Sector ETF trend data
-- 3 day trend
-- 7 day trend
-- 20 day moving average comparison
-- 50 day moving average comparison
-- Volume change
-- RSI
-- Volatility
-- Revenue growth
-- Earnings growth
-- Profit margin
-- Forward P/E
-- Analyst target upside
-- Recent headline sentiment
-- A simulated AI selection label: Top Pick, Watch, or Avoid for Now
-- A next 3 day prediction
-- A confidence score
-- SQLite prediction saving
-- Automatic evaluation after the prediction target date passes
-- Rolling daily trend predictions versus reality
-- Forecasts for today, tomorrow, and the day after
-- A 7 forecast date display limit so the page does not get too crowded
-- Optional Financial Modeling Prep news with `FMP_API_KEY`
-- Optional OpenAI explanations with `OPENAI_API_KEY`
-
-## Optional API keys
-
-The app works without API keys.
-
-To improve the model later, you can add:
-
-- `FMP_API_KEY` for stronger news data
-- `OPENAI_API_KEY` for AI-written explanations
-
-## What to do next
-
-Use `DEPLOYMENT.md` to put the app online.
