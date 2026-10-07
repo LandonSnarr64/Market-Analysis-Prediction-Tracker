@@ -4,6 +4,10 @@ This project is a financial market tracker I built using Python and Streamlit. I
 
 The app compares stocks across different market sectors using real market data, technical indicators, company fundamentals, analyst information, and recent news. It combines these factors into a scoring system and tracks how its predictions compare with actual market results over time.
 
+## Dashboard
+
+![Market Analysis & Prediction Tracker Dashboard](dashboard.png)
+
 ## What It Does
 
 The tracker looks at several stocks within each market sector and compares them using different types of financial data.
