@@ -12,7 +12,7 @@ from supabase import create_client
 
 
 st.set_page_config(
-    page_title="AI Market Prediction Tracker",
+    page_title="Market Analysis & Prediction Tracker",
     page_icon=":chart_with_upwards_trend:",
     layout="wide",
 )
@@ -1333,11 +1333,11 @@ evaluate_old_predictions()
 evaluate_daily_forecasts()
 
 
-st.title("AI Market Prediction Tracker")
-st.caption("Multi-factor stock selection using market data, fundamentals, sector data, news, and saved evaluation.")
+st.title("Market Analysis & Prediction Tracker")
+st.caption("Multi-factor stock analysis using market data, company fundamentals, sector performance, news, and historical prediction tracking.")
 st.caption(f"Database mode: {get_database_backend()}")
 
-st.header("Simulated AI Pick Portfolio")
+st.header("Simulated Portfolio")
 st.write(
     "The tracker selects one stock from each sector and starts with a simulated $1,000 in each selected stock."
 )
@@ -1370,7 +1370,7 @@ col1.metric("Starting Value", f"${STARTING_PORTFOLIO_VALUE:,.2f}")
 col2.metric("Current Simulated Value", f"${total_simulated_value:,.2f}")
 col3.metric("Simulated Change", f"${portfolio_change:,.2f}", f"{portfolio_change_percent:.2f}%")
 
-st.header("AI Selected Stocks")
+st.header("Selected Stocks")
 
 for pick in best_picks:
     stock_data = pick["stock_data"]
@@ -1403,13 +1403,13 @@ for pick in best_picks:
             st.metric("Model Score", pick["score"])
 
         prediction_cols = st.columns(4)
-        prediction_cols[0].write("**AI Selection Label**")
+        prediction_cols[0].write("**Signal**")
         prediction_cols[0].write(pick["signal"])
 
-        prediction_cols[1].write("**Next 3 Day Prediction**")
+        prediction_cols[1].write("**3-day Outlook**")
         prediction_cols[1].write(pick["prediction"])
 
-        prediction_cols[2].write("**Confidence**")
+        prediction_cols[2].write("**Signal Strength**")
         prediction_cols[2].write(f"{pick['confidence']}%")
 
         prediction_cols[3].write("**Current Simulated Value**")
