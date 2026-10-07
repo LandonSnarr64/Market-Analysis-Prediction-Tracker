@@ -36,3 +36,7 @@ CREATE TABLE IF NOT EXISTS daily_forecasts (
     result_status TEXT DEFAULT 'Pending',
     UNIQUE(prediction_date, forecast_date, sector, ticker)
 );
+-- Enable Row Level Security for database tables.
+-- The Streamlit backend accesses Supabase using a server-side secret key.
+ALTER TABLE predictions ENABLE ROW LEVEL SECURITY;
+ALTER TABLE daily_forecasts ENABLE ROW LEVEL SECURITY;
